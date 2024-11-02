@@ -1,2 +1,3 @@
 def modificar_vidas(diccionario_jugador:dict, vida_nueva:int)->bool:
-    diccionario_jugador['vidas'] = vida_nueva
+    contador = 0; suma = 1
+    
