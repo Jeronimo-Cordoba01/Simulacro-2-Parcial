@@ -1,6 +1,8 @@
 import random
 from os import system
 from Borrador import *
+from Puntaje import *
+from Vidas import *
 
 def opciones_menu(mensaje:str, lista_opciones:list)->int:
     return (
