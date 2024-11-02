@@ -17,13 +17,14 @@ def mezclar_lista(lista_elementos:list)->bool:
         return False
 
 def obtener_elemento_aleatorio(lista_elementos:list)->any:
-    pass
+    return random.choice(lista_elementos)
 
 def terminar_juego(mensaje_final:str)->None:
-    pass
+    system("cls")
+    print(mensaje_final)
 
 def calcular_porcentaje(cantidad_aciertos:int, cantidad_partidas:int)->float:
-    pass
+    return (cantidad_aciertos / cantidad_partidas) * 100
 
 def verificar_estado_juego(diccionario_juego:dict)->bool:
-    pass
+    return diccionario_juego["continuar"]

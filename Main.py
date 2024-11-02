@@ -1,21 +1,21 @@
 import random
 from os import system
-from Borrador import *
+from Extras import *
 from Puntaje import *
 from Vidas import *
 
 def opciones_menu(mensaje:str, lista_opciones:list)->int:
     return (
         "\nMenú de gestión de Pacientes: \n"
-        "1. Dar de alta paciente. \n"
-        "2. Modificar paciente. \n"
-        "3. Eliminar pacientes. \n"
-        "4. Mostrar todos los pacientes. \n"
-        "5. Ordenar pacientes. \n"
-        "6. Buscar paciente por el DNI. \n"
-        "7. Calcular promedio. \n"
-        "8. Determinar compatibilidad. \n"
-        "9. Salir. \n"
+        "1.  \n"
+        "2.  \n"
+        "3.  \n"
+        "4.  \n"
+        "5.  \n"
+        "6.  \n"
+        "7.  \n"
+        "8.  \n"
+        "9.  \n"
     )
 def mostrar_menu(mensaje:str)->None:
         system("cls")
