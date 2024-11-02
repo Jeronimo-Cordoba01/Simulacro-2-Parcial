@@ -1,6 +1,7 @@
 import random
+from os import system
 
-def modificar_puntaje(diccionario_jugador:dict, nuevo_puntaje:int)->bool:
+def modificar_puntaje(diccionario_jugador:dict, nuevo_puntaje:int)->bool:# fabio    
     pass
 
 def modificar_vidas(diccionario_jugador:dict, vida_nueva:int)->bool:
@@ -55,30 +56,30 @@ def mostrar_rankings(lista_rankings:list)->bool:
     pass
 
 def ingresar_nombre_usuario(mensaje:str, mensaje_error:str, minimo:int, maximo:int)->str:
-    pass
+    minimo = 3; maximo = 15; mensaje = "Bienvendido"; mensaje_error = "Debe ser entre 3 y 15 caracteres"
+    reintentos = 0
+    while reintentos < 3:
+        nombre = input(mensaje).strip()
+        if minimo <= len(nombre) <= maximo and nombre.isalpha():
+            return nombre
+        print(f"Nombre inválido. Por favor, ingrese un texto alfabético entre {minimo} y {maximo} caracteres.")
+        reintentos += 1
+    print(f"Se han superado los {reintentos} intentos. Por favor, vuelva a intentarlo.")
+    return None
 
 def ingresar_numero(mensaje:str, mensaje_error:str, minimo:int, maximo:int)->int:
-    pass
-
-def mostrar_menu(mensaje:str)->None:
-    pass
+    reintentos = 0; minimo = 3; maximo = 9999; mensaje = "Ingresa tu identificador"; mensaje_error = "Debe ser entre 3 y 9999"
+    while reintentos < 3:
+        iden = input(mensaje).strip()
+        if iden.isdigit() and minimo <= int(iden) <= maximo:
+            return int(iden)
+        print("Identificador inválido. Por favor, ingrese un número entre 1 y 9999.")
+        reintentos += 1
+    print("Demasiados intentos fallidos.")
+    return None
 
 def calcular_porcentaje(cantidad_aciertos:int, cantidad_partidas:int)->float:
     pass
 
 def verificar_estado_juego(diccionario_juego:dict)->bool:
     pass
-
-def jugar_juego(diccionario_juego:dict,lista_rankings:list)->None:
-    #Arranca el juego
-    #Aca creamos todas las variables temporales que necesite nuestro juego
-    
-    while verificar_estado_juego(diccionario_juego):
-        #Jugamos
-        #Verificamos si la partida sigue o no
-        pass
-    
-    #Pido el nombre del jugador para guardar la puntuación
-    guardar_puntuacion(lista_rankings,)
-    terminar_juego("TERMINO EL JUEGO")
-    
