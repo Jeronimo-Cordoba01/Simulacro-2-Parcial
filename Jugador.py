@@ -1,35 +1,58 @@
 class Jugador:
-    def __init__(self, nombre:str, identificador:int, puntaje:int, vidas:int):
+    def __init__(self, nombre: str, identificador: int, puntaje: int, vidas: int):
         self.nombre = nombre
         self.identificador = identificador
         self.puntaje = puntaje
         self.vidas = vidas
 
-    def modificar_estadistica_jugador(usuario_modificar:dict, clave:str, valor:any)->bool:
-        if clave in usuario_modificar:
-            usuario_modificar[clave] = valor
+    def modificar_estadistica_jugador(self, clave: str, valor: any) -> bool:
+        """
+        Modifica una estadística del jugador usando 'match'.
+        """
+        try:
+            match clave:
+                case "nombre":
+                    self.nombre = valor
+                case "identificador":
+                    self.identificador = valor
+                case "puntaje":
+                    self.puntaje = valor
+                case "vidas":
+                    self.vidas = valor
+                case _:
+                    print(f"Error: La clave '{clave}' no es válida.")
+                    return False
             return True
-        return False
+        except Exception as e:
+            print(f"Error al modificar la estadística: {e}")
+            return False
 
-    def ingresar_nombre_usuario(mensaje:str, mensaje_error:str, minimo:int, maximo:int, reintentos:int)->str:
-        minimo = 3; maximo = 15; mensaje = "Bie nvendido"; mensaje_error = "Debe ser entre 3 y 15 caracteres"
+    def ingresar_nombre_usuario(self, mensaje: str, mensaje_error: str, minimo: int = 3, maximo: int = 15) -> str:
+        """
+        Permite al usuario ingresar su nombre.
+        """
         reintentos = 0
         while reintentos < 3:
             nombre = input(mensaje).strip()
             if minimo <= len(nombre) <= maximo and nombre.isalpha():
+                self.nombre = nombre
                 return nombre
-            print(f"Nombre inválido. Por favor, ingrese un texto alfabético entre {minimo} y {maximo} caracteres.")
+            print(f"Nombre inválido. Debe ser entre {minimo} y {maximo} caracteres.")
             reintentos += 1
         print(mensaje_error)
         return None
 
-    def ingresar_numero(mensaje:str, mensaje_error:str, minimo:int, maximo:int)->int:
-        reintentos = 0; minimo = 3; maximo = 9999; mensaje = "Ingresa tu identificador"; mensaje_error = "Debe ser entre 3 y 9999"
+    def ingresar_numero(self, mensaje: str, mensaje_error: str, minimo: int = 1, maximo: int = 9999) -> int:
+        """
+        Permite al usuario ingresar un identificador.
+        """
+        reintentos = 0
         while reintentos < 3:
             iden = input(mensaje).strip()
             if iden.isdigit() and minimo <= int(iden) <= maximo:
-                return int(iden)
-            print("Identificador inválido. Por favor, ingrese un número entre 1 y 9999.")
+                self.identificador = int(iden)
+                return self.identificador
+            print(f"Identificador inválido. Debe ser un número entre {minimo} y {maximo}.")
             reintentos += 1
         print(mensaje_error)
         return None
