@@ -71,3 +71,5 @@ def jugar_juego() -> None:
     ordenar_puntaciones(lista_rankings, 'desc')
     mostrar_rankings(lista_rankings)
     terminar_juego("TERMINÓ EL JUEGO")
+    
+jugar_juego()
