@@ -30,7 +30,7 @@ def mostrar_menu() -> None:
         case "1":
             jugar_juego()
         case "2":
-            mostrar_rankings(lista_rankings)
+            mostrar_rankings()
         case "3":
             terminar_juego("¡Gracias por jugar!")
             return  
@@ -47,13 +47,16 @@ def jugar_juego() -> None:
     diccionario_juego = {"continuar": True}
     lista_rankings = []
     
+
     nombre = input("Ingresa tu nombre: ")
     identificador = int(input("Ingresa tu identificador (número): "))
     jugador = Jugador(nombre, identificador, 0, 3)
 
     pregunta_contador = 0  # Contador de preguntas respondidas
 
+    
     while verificar_estado_juego(diccionario_juego):
+        mostrar_menu()
         for pregunta in preguntas_star_wars:
             # Verificar si ya se han respondido 10 preguntas
             if pregunta_contador == 10:
