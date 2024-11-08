@@ -20,7 +20,6 @@ def obtener_elemento_aleatorio(lista_elementos:list)->any:
     return random.choice(lista_elementos)
 
 def terminar_juego(mensaje_final:str)->None:
-    system("cls")
     print(mensaje_final)
 
 def calcular_porcentaje(cantidad_aciertos:int, cantidad_partidas:int)->float:
