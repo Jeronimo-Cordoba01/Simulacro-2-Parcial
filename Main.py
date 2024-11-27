@@ -31,18 +31,16 @@ def jugar_juego(lista_rankings:list) -> None:
     identificador = int(input("Ingresa tu identificador (número): "))
     jugador = Jugador(nombre, identificador, 0, 3)
 
-    pregunta_contador = 0  # Contador de preguntas respondidas
-
+    pregunta_contador = 0
     
     while verificar_estado_juego(diccionario_juego):
         for pregunta in preguntas_star_wars:
-            # Verificar si ya se han respondido 10 preguntas
             if pregunta_contador == len(preguntas_star_wars):
                 print("¡Felicidades! Has completado las 10 preguntas.")
                 diccionario_juego["continuar"] = False
                 break
 
-            pregunta_contador += 1  # Incrementar el contador de preguntas respondidas
+            pregunta_contador += 1 
             
             print("\n" + pregunta["pregunta"])
             for i, opcion in enumerate(pregunta["opciones"], 1):
