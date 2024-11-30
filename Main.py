@@ -24,9 +24,6 @@ def jugar_juego(lista_rankings:list) -> None:
     y actualiza puntajes.
     """
     diccionario_juego = {"continuar": True}
-    
-    
-
     nombre = input("Ingresa tu nombre: ")
     identificador = int(input("Ingresa tu identificador (número): "))
     jugador = Jugador(nombre, identificador, 0, 3)
