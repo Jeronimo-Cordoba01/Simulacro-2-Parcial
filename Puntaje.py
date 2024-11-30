@@ -16,7 +16,11 @@ def guardar_puntuacion(lista_rankings:list, diccionario_jugador:int)->bool:
         print("Error: La clave 'puntaje' no existe en el diccionario del jugador.")
         return False
 
-def ordenar_puntaciones(lista_rankings:list, criterio:str)->bool:
+def ordenar_puntaciones(lista_rankings: list, criterio: str) -> bool:
+    for elemento in lista_rankings:
+        if not isinstance(elemento, dict) or 'puntaje' not in elemento:
+            print(f"Error: El elemento {elemento} no contiene la clave 'puntaje'.")
+            return False
     if criterio == 'asc':
         for i in range(len(lista_rankings)):
             for j in range(len(lista_rankings)):
@@ -27,13 +31,28 @@ def ordenar_puntaciones(lista_rankings:list, criterio:str)->bool:
             for j in range(len(lista_rankings)):
                 if lista_rankings[i]['puntaje'] > lista_rankings[j]['puntaje']:
                     lista_rankings[i], lista_rankings[j] = lista_rankings[j], lista_rankings[i]
-
-def mostrar_rankings(lista_rankings:list)->bool:
-    print('**********RANKINGS************')
-    if len(lista_rankings) > 0:
-        print(f'| {"Puesto":<6} | {"Puntaje":<7} | {"Nombre":<10} | {"Identificador":<14} |')
-        print(f'| {"-"*6} | {"-"*7} | {"-"*10} | {"-"*14} |')
-        for i, puntaje in enumerate(lista_rankings, 1):
-            print(f"| {i:<6} | {puntaje['puntaje']:<7} | {puntaje['nombre']:<10} | {puntaje['identificador']:<14} |")
     else:
-        print('La lista está vacía')
+        print("Error: Criterio inválido. Use 'asc' o 'desc'.")
+        return False
+    return True
+
+
+def mostrar_rankings(rankings):
+    """
+    Función para mostrar un ranking con validaciones.
+    :param rankings: Lista de diccionarios que representan los rankings.
+    """
+    print("**********RANKINGS**********")
+    print(f"| {'Puesto':<5} | {'Puntaje':<7} | {'Nombre':<10} | {'Identificador':<13} |")
+    print(f"| {'-'*5} | {'-'*7} | {'-'*10} | {'-'*13} |")
+    
+    for i, elemento in enumerate(rankings, start=1):
+        if isinstance(elemento, dict):
+            if all(clave in elemento for clave in ["puntaje", "nombre", "identificador"]):
+                print(f"| {i:<5} | {elemento['puntaje']:<7} | {elemento['nombre']:<10} | {elemento['identificador']:<13} |")
+            else:
+                print(f"| {i:<5} | Error: Faltan claves necesarias en {elemento} |")
+        else:
+            print(f"| {i:<5} | Error: elemento inválido ({elemento}) no es un diccionario |")
+
+    input("Presiona Enter para continuar...")
